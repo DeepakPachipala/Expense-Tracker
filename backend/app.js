@@ -9,7 +9,7 @@ const path = './routes';
 require('dotenv').config()
 
 const PORT = process.env.PORT || 5001
-const frontendUrl = process.env.FRONTEND_URL
+const frontendUrl = import.meta.env.FRONTEND_URL
 
 //middlewares
 app.use(express.json())
