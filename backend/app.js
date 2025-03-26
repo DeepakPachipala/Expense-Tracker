@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors');
 const { db } = require('./db/db');
+const fs = require('fs');
 const {readdirSync} = require('fs')
 const app = express()
 const path = './routes';
