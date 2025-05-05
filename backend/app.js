@@ -7,11 +7,13 @@ const app = express()
 require('dotenv').config()
 
 const PORT = process.env.PORT || 5001
-const frontendUrl = process.env.FRONTEND_URL
 
 //middlewares
 app.use(express.json())
-app.use(cors({ origin: frontendUrl }))
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true
+  }))
 
 //routes
 readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
