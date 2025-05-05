@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react"
 import axios from 'axios'
 
-const REACT_APP_BACKEND_API_URL = `${process.env.REACT_APP_BACKEND_API}`;
+const REACT_APP_BACKEND_API_URL = `${process.env.REACT_APP_BACKEND_API}/api/v1/`;
 
 const GlobalContext = React.createContext()
 
