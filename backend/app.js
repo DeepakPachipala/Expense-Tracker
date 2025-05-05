@@ -10,13 +10,13 @@ const PORT = process.env.PORT || 5001
 
 //middlewares
 app.use(express.json())
-app.use(cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true
-  }))
+app.use(cors())
 
-//routes
-readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
+const path = require('path');
+
+readdirSync(path.join(__dirname, 'routes')).map((route) => {
+  app.use('/api/v1', require(path.join(__dirname, 'routes', route)));
+});
 
 const server = () => {
     db()
