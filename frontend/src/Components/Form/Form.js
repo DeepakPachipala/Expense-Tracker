@@ -67,7 +67,7 @@ function Form() {
                     }}
                 />
             </div>
-            <div className="selects input-control">
+            {/* <div className="selects input-control">
                 <select required value={category} name="category" id="category" onChange={handleInput('category')}>
                     <option value=""  disabled >Select Option</option>
                     <option value="salary">Salary</option>
@@ -79,7 +79,7 @@ function Form() {
                     <option value="youtube">Youtube</option>  
                     <option value="other">Other</option>  
                 </select>
-            </div>
+            </div> */}
             <div className="input-control">
                 <textarea name="description" value={description} placeholder='Add A Reference' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
             </div>
@@ -101,47 +101,110 @@ function Form() {
 const FormStyled = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    input, textarea, select{
-        font-family: inherit;
-        font-size: inherit;
-        outline: none;
-        border: none;
-        padding: .5rem 1rem;
-        border-radius: 5px;
-        border: 2px solid #fff;
-        background: transparent;
-        resize: none;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-        color: rgba(34, 34, 96, 0.9);
-        &::placeholder{
-            color: rgba(34, 34, 96, 0.4);
-        }
+    gap: 1.5rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+
+    .error {
+        color: red;
+        font-size: 0.9rem;
+        text-align: center;
     }
-    .input-control{
-        input{
-            width: 100%;
+
+    input, textarea, select {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        outline: none;
+        border: 1px solid #ccc;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        background: #f9f9f9;
+        width: 100%;
+        transition: border 0.3s ease;
+        color: #222;
+
+        &:focus {
+            border-color: var(--color-primary, #4CAF50);
+            background: #fff;
+        }
+
+        &::placeholder {
+            color: #aaa;
         }
     }
 
-    .selects{
+    textarea {
+        min-height: 100px;
+    }
+
+    .input-control {
+        width: 100%;
+    }
+
+    .selects {
+        select {
+            appearance: none;
+            background-color: #f9f9f9;
+        }
+    }
+
+    .submit-btn {
         display: flex;
-        justify-content: flex-end;
-        select{
-            color: rgba(34, 34, 96, 0.4);
-            &:focus, &:active{
-                color: rgba(34, 34, 96, 1);
+        justify-content: center;
+
+        button {
+            background: var(--color-accent, #4CAF50);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.6rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            &:hover {
+                background: var(--color-green, #45a049);
             }
         }
     }
 
-    .submit-btn{
-        button{
-            box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-            &:hover{
-                background: var(--color-green) !important;
+    /* DatePicker custom styling */
+    .react-datepicker-wrapper {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 1.5rem;
+
+        input, textarea, select {
+            font-size: 0.95rem;
+        }
+
+        .submit-btn {
+            button {
+                width: 100%;
+                padding: 0.9rem;
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        padding: 1rem;
+
+        .submit-btn {
+            button {
+                font-size: 0.9rem;
             }
         }
     }
 `;
+
 export default Form

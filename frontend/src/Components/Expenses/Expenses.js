@@ -46,33 +46,93 @@ function Expenses() {
 }
 
 const ExpenseStyled = styled.div`
-    display: flex;
-    overflow: auto;
-    .total-income{
+    width: 100%;
+    padding-bottom: 2rem;
+
+    h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+    }
+
+    .total-income {
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #FCF6F9;
-        border: 2px solid #FFFFFF;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-        border-radius: 20px;
-        padding: 1rem;
-        margin: 1rem 0;
-        font-size: 2rem;
-        gap: .5rem;
-        span{
-            font-size: 2.5rem;
+        background: #ffffff;
+        border: 2px solid #f0f0f0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border-radius: 16px;
+        padding: 1rem 2rem;
+        margin: 1.5rem 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+
+        span {
+            font-size: 2rem;
             font-weight: 800;
-            color: var(--color-green);
+            color: var(--color-green, #27ae60);
+            margin-left: 0.5rem;
         }
     }
-    .income-content{
+
+    .income-content {
         display: flex;
         gap: 2rem;
-        .incomes{
+        align-items: flex-start;
+
+        .form-container {
             flex: 1;
+            min-width: 300px;
+        }
+
+        .incomes {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            overflow-y: auto;
+            max-height: 600px;
+            padding-right: 1rem;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .income-content {
+            flex-direction: column;
+
+            .incomes {
+                max-height: none;
+                padding-right: 0;
+            }
+        }
+
+        .total-income {
+            flex-direction: column;
+            font-size: 1.3rem;
+
+            span {
+                font-size: 1.8rem;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 2rem;
+        }
+
+        .total-income {
+            font-size: 1.2rem;
+
+            span {
+                font-size: 1.5rem;
+            }
         }
     }
 `;
+
 
 export default Expenses

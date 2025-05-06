@@ -5,6 +5,7 @@ import axios from 'axios'
 // const process.env.REACT_APP_BACKEND_API_URL = "http://localhost:5000/api/v1/";
 console.log(process.env.REACT_APP_BACKEND_API_URL, 'url');
 
+const REACT_APP_BACKEND_API_URL = `${process.env.REACT_APP_BACKEND_API}/api/v1/`;
 
 const GlobalContext = React.createContext()
 
@@ -16,7 +17,7 @@ export const GlobalProvider = ({children}) => {
 
     //calculate incomes
     const addIncome = async (income) => {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}add-income`, income)
+        const response = await axios.post(`${REACT_APP_BACKEND_API_URL}add-income`, income)
             .catch((err) =>{
                 setError(err.response.data.message)
             })
@@ -24,13 +25,13 @@ export const GlobalProvider = ({children}) => {
     }
 
     const getIncomes = async () => {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}get-incomes`)
+        const response = await axios.get(`${REACT_APP_BACKEND_API_URL}get-incomes`)
         setIncomes(response.data)
         console.log(response.data)
     }
 
     const deleteIncome = async (id) => {
-        const res  = await axios.delete(`${process.env.REACT_APP_BACKEND_API_URL}delete-income/${id}`)
+        const res  = await axios.delete(`${REACT_APP_BACKEND_API_URL}delete-income/${id}`)
         getIncomes()
     }
 
@@ -46,7 +47,7 @@ export const GlobalProvider = ({children}) => {
 
     //calculate incomes
     const addExpense = async (income) => {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}add-expense`, income)
+        const response = await axios.post(`${REACT_APP_BACKEND_API_URL}add-expense`, income)
             .catch((err) =>{
                 setError(err.response.data.message)
             })
@@ -54,13 +55,13 @@ export const GlobalProvider = ({children}) => {
     }
 
     const getExpenses = async () => {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}get-expenses`)
+        const response = await axios.get(`${REACT_APP_BACKEND_API_URL}get-expenses`)
         setExpenses(response.data)
         console.log(response.data)
     }
 
     const deleteExpense = async (id) => {
-        const res  = await axios.delete(`${process.env.REACT_APP_BACKEND_API_URL}delete-expense/${id}`)
+        const res  = await axios.delete(`${REACT_APP_BACKEND_API_URL}delete-expense/${id}`)
         getExpenses()
     }
 
