@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors');
 const { db } = require('./db/db');
-const {readdirSync} = require('fs')
+const transactionsRouter = require('./routes/transactions'); 
 const app = express()
 
 require('dotenv').config()
@@ -10,10 +10,14 @@ const PORT = process.env.PORT || 5001
 
 //middlewares
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+}));
 
-//routes
-readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
+const path = require('path');
+
+app.use('/api/v1', transactionsRouter);
 
 const server = () => {
     db()
